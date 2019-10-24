@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="236.0" prefWidth="424.0" styleClass="shadowPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VueController.Categories.FormulaireCategorieController">
+   <children>
+      <AnchorPane id="confirmDialog" layoutX="14.0" layoutY="14.0" prefHeight="206.0" prefWidth="400.0" styleClass="parentPane">
+         <children>
+            <Pane prefHeight="50.0" prefWidth="400.0" styleClass="top">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="354.0" layoutY="9.0" onMouseClicked="#handleCanceled" pickOnBounds="true" preserveRatio="true" styleClass="clickable">
+                     <image>
+                        <Image url="@../../Assets/icone/exit.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <VBox layoutX="-1.0" layoutY="50.0" prefHeight="100.0" prefWidth="400.0">
+               <children>
+                  <TextField fx:id="txtCategorie" prefWidth="249.0" promptText="Categorie" styleClass="textField">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+               </padding>
+            </VBox>
+            <HBox alignment="CENTER" layoutX="-1.0" layoutY="150.0" prefHeight="30.0" prefWidth="400.0">
+               <children>
+                  <JFXButton fx:id="btnConfirmed" defaultButton="true" onAction="#handleConfirmed" styleClass="confirmerBtn" text="Ajouter" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton cancelButton="true" onAction="#handleCanceled" style="-fx-border-insets: -1;" styleClass="annulerBtn" text="Annuler" textFill="#3498db">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                     </padding>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@../global.css" />
+      <URL value="@formulairecategorie.css" />
+   </stylesheets>
+</AnchorPane>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 24, 2019, 11:20:10 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Hibernate.Client" table="client" catalog="Materiels" optimistic-lock="version">
+        <id name="numClient" type="java.lang.Integer">
+            <column name="num_client" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="province" class="Model.Hibernate.Province" fetch="select">
+            <column name="province_client" length="45" not-null="true" />
+        </many-to-one>
+        <property name="nomClient" type="string">
+            <column name="nom_client" length="45" not-null="true" />
+        </property>
+        <property name="prenomClient" type="string">
+            <column name="prenom_client" length="45" not-null="true" />
+        </property>
+        <property name="telClient" type="string">
+            <column name="tel_client" length="10" not-null="true" />
+        </property>
+        <property name="adresseClient" type="string">
+            <column name="adresse_client" length="45" not-null="true" />
+        </property>
+        <set name="commandes" table="commande" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="client_num_client" not-null="true" />
+            </key>
+            <one-to-many class="Model.Hibernate.Commande" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 24, 2019, 11:20:10 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Hibernate.Materiels" table="materiels" catalog="Materiels" optimistic-lock="version">
+        <id name="numSerie" type="int">
+            <column name="num_serie" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="categorie" class="Model.Hibernate.Categorie" fetch="select">
+            <column name="categorie_categorie" length="50" not-null="true" />
+        </many-to-one>
+        <property name="nomMateriels" type="string">
+            <column name="nom_materiels" length="45" not-null="true" />
+        </property>
+        <property name="prixMateriels" type="float">
+            <column name="prix_materiels" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="quantiteStock" type="int">
+            <column name="quantite_stock" not-null="true" />
+        </property>
+        <set name="contients" table="contient" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="materiels_num_serie" not-null="true" />
+            </key>
+            <one-to-many class="Model.Hibernate.Contient" />
+        </set>
+    </class>
+</hibernate-mapping>

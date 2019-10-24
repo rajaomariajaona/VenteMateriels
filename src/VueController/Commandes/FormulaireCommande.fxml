@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="390.0" prefWidth="395.0" styleClass="shadowPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VueController.Commandes.FormulaireCommandeController">
+   <children>
+      <AnchorPane id="confirmDialog" layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="400.0" styleClass="parentPane">
+         <children>
+            <Pane prefHeight="50.0" prefWidth="400.0" styleClass="top">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="354.0" layoutY="9.0" onMouseClicked="#handleCanceled" pickOnBounds="true" preserveRatio="true" styleClass="clickable">
+                     <image>
+                        <Image url="@../../Assets/icone/exit.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <VBox layoutX="-1.0" layoutY="50.0" prefHeight="283.0" prefWidth="400.0">
+               <children>
+                  <TextField fx:id="txtNom" prefWidth="249.0" promptText="Nom" styleClass="textField">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtPrenom" prefWidth="249.0" promptText="Prenom" styleClass="textField">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtTel" prefWidth="249.0" promptText="Telephone" styleClass="textField">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtAdresse" prefWidth="249.0" promptText="Adresse" styleClass="textField">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <JFXComboBox fx:id="cbProvince" focusColor="#3498db" prefHeight="26.0" prefWidth="308.0" unFocusColor="#2c3e50">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+               </padding>
+            </VBox>
+            <HBox alignment="CENTER" layoutX="-1.0" layoutY="333.0" prefHeight="30.0" prefWidth="400.0">
+               <children>
+                  <JFXButton fx:id="btnConfirmed" defaultButton="true" onAction="#handleConfirmed" styleClass="confirmerBtn" text="Ajouter" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton cancelButton="true" onAction="#handleCanceled" style="-fx-border-insets: -1;" styleClass="annulerBtn" text="Annuler" textFill="#3498db">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                     </padding>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../global.css" />
+      <URL value="@formulaireclient.css" />
+   </stylesheets>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</AnchorPane>

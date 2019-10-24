@@ -1,0 +1,54 @@
+
+.top{
+    -fx-background-color: #3498db;
+}
+.top-danger{
+    -fx-background-color: #e74c3c;
+}
+.clickable{
+    -fx-cursor: hand;
+}
+.clickable:hover{
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+.confirmerBtn{
+    -fx-background-color: #3498db;
+    -fx-font-color: #3498db;
+}
+.annulerBtn{
+    -fx-background-color: whitesmoke;
+    -fx-border-color: #3498db;
+    -fx-border-radius: 2px;
+    -fx-border-width: 1.5px;
+}
+.confirmerBtn-danger{
+    -fx-background-color: #e74c3c;
+    -fx-font-color: #e74c3c;
+}
+.annulerBtn-danger{
+    -fx-background-color: whitesmoke;
+    -fx-border-color: #e74c3c;
+    -fx-border-radius: 2px;
+    -fx-border-width: 1.5px;
+}
+.textField{
+    -fx-background-color: transparent;
+    -fx-text-fill: #2c3e50;
+    -fx-prompt-text-fill: #2c3e50;
+    -fx-border-color: #2c3e50;
+    -fx-border-width:  0px 0px 1.5px 0px;
+}
+.textField:focused{
+    -fx-text-fill: #3498db;
+    -fx-prompt-text-fill: #3498db;
+    -fx-border-color: #3498db;
+    -fx-border-width:  0px 0px 3px 0px;
+}
+.shadowPane{
+    -fx-background-color: transparent;
+}
+.parentPane{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);
+    -fx-background-color: whitesmoke;
+}

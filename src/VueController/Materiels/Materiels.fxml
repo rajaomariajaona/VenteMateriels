@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="708.0" prefWidth="824.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VueController.Materiels.MaterielsController">
+   <children>
+      <VBox prefHeight="708.0" prefWidth="824.0">
+         <children>
+            <GridPane prefHeight="95.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox alignment="BOTTOM_LEFT">
+                     <children>
+                        <StackPane alignment="CENTER_RIGHT">
+                           <children>
+                              <TextField fx:id="txtSearch" promptText="Recherche..." styleClass="textField" />
+                              <ImageView fx:id="imgSearch" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Assets/icone/search.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </StackPane>
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_LEFT" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#handlePost" pickOnBounds="true" preserveRatio="true" styleClass="clickable">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../Assets/icone/add.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#handlePatch" pickOnBounds="true" preserveRatio="true" styleClass="clickable">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../Assets/icone/edit.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#handleDelete" pickOnBounds="true" preserveRatio="true" styleClass="clickable">
+                                 <image>
+                                    <Image url="@../../Assets/icone/delete.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+            <ScrollPane prefHeight="572.0" prefWidth="764.0">
+               <content>
+                  <TableView fx:id="liste" minHeight="545.0" prefWidth="765.0" stylesheets="@../table.css" tableMenuButtonVisible="true">
+                     <columns>
+                         <TableColumn fx:id="colNumSerie" editable="false" minWidth="100.0" prefWidth="168.0" text="Numero de serie" />
+                         <TableColumn fx:id="colNom" editable="false" minWidth="100.0" prefWidth="189.0" text="Nom " />
+                         <TableColumn fx:id="colPrix" editable="false" minWidth="95.0" prefWidth="143.0" text="Prix (Ar)" />
+                         <TableColumn fx:id="colQuantite" editable="false" minWidth="73.0" prefWidth="73.0" text="Quantite en stock" />
+                         <TableColumn fx:id="colCategorie" editable="false" minWidth="100.0" prefWidth="190.0" text="Categorie" />
+                     </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@../global.css" />
+      <URL value="@materiels.css" />
+   </stylesheets>
+</AnchorPane>

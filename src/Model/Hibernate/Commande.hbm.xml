@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 24, 2019, 11:20:10 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Hibernate.Commande" table="commande" catalog="Materiels" optimistic-lock="version">
+        <id name="numCommande" type="java.lang.Integer">
+            <column name="num_commande" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="client" class="Model.Hibernate.Client" fetch="select">
+            <column name="client_num_client" not-null="true" />
+        </many-to-one>
+        <property name="dateCommande" type="date">
+            <column name="date_commande" length="10" not-null="true" />
+        </property>
+        <property name="livree" type="boolean">
+            <column name="livree" not-null="true" />
+        </property>
+        <set name="contients" table="contient" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="commande_num_commande" not-null="true" />
+            </key>
+            <one-to-many class="Model.Hibernate.Contient" />
+        </set>
+    </class>
+</hibernate-mapping>
