@@ -53,7 +53,7 @@ public class MainController implements Initializable {
             parents = new Parent[5];
             parents[0] = FXMLLoader.load(getClass().getResource("/VueController/Clients/Clients.fxml"));
             parents[1] = FXMLLoader.load(getClass().getResource("/VueController/Clients/Clients.fxml"));
-            parents[2] = FXMLLoader.load(getClass().getResource("/VueController/Clients/Clients.fxml"));
+            parents[2] = FXMLLoader.load(getClass().getResource("/VueController/Commandes/Commandes.fxml"));
             parents[3] = FXMLLoader.load(getClass().getResource("/VueController/Materiels/Materiels.fxml"));
             parents[4] = FXMLLoader.load(getClass().getResource("/VueController/Categories/Categories.fxml"));
             for (Parent parent : parents) {
@@ -97,6 +97,9 @@ public class MainController implements Initializable {
         switch (n.getId().replace("btn", "")) {
             case "Clients":
                 parents[1].setVisible(true);
+                break;
+            case "Commandes":
+                parents[2].setVisible(true);
                 break;
             case "Articles":
                 parents[3].setVisible(true);

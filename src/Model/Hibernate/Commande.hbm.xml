@@ -8,7 +8,7 @@
             <column name="num_commande" />
             <generator class="identity" />
         </id>
-        <many-to-one name="client" class="Model.Hibernate.Client" fetch="select">
+        <many-to-one lazy="false" name="client" class="Model.Hibernate.Client" fetch="select">
             <column name="client_num_client" not-null="true" />
         </many-to-one>
         <property name="dateCommande" type="date">

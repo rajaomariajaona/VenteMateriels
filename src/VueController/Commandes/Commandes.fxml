@@ -17,10 +17,6 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="708.0" prefWidth="824.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VueController.Commandes.CommandesController">
-    <stylesheets>
-        <URL value="@../global.css" />
-      <URL value="@clients.css" />
-    </stylesheets>
    <children>
       <VBox prefHeight="708.0" prefWidth="824.0">
          <children>
@@ -78,6 +74,14 @@
                                     <Insets left="10.0" right="10.0" top="10.0" />
                                  </HBox.margin>
                               </ImageView>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="252.0" layoutY="20.0" onMouseClicked="#handlePanier" pickOnBounds="true" preserveRatio="true" styleClass="clickable">
+                                 <image>
+                                    <Image url="@../../Assets/icone/panier.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
                            </children>
                            <VBox.margin>
                               <Insets bottom="15.0" />
@@ -92,8 +96,8 @@
                   <TableView fx:id="liste" prefHeight="558.0" prefWidth="772.0" stylesheets="@../table.css" tableMenuButtonVisible="true">
                      <columns>
                          <TableColumn fx:id="colId" editable="false" minWidth="100.0" prefWidth="113.0" text="id" visible="false" />
-                         <TableColumn fx:id="colNom" editable="false" minWidth="100.0" prefWidth="246.0" text="Nom " />
-                         <TableColumn fx:id="colTel" editable="false" minWidth="100.0" prefWidth="154.0" text="Date commande" />
+                         <TableColumn fx:id="colNom" editable="false" minWidth="100.0" prefWidth="411.0" text="Nom " />
+                         <TableColumn fx:id="colDate" editable="false" minWidth="100.0" prefWidth="330.0" text="Date commande" />
                      </columns>
                   </TableView>
                </content>
@@ -107,4 +111,8 @@
    <padding>
       <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
    </padding>
+   <stylesheets>
+      <URL value="@../global.css" />
+      <URL value="@commandes.css" />
+   </stylesheets>
 </AnchorPane>

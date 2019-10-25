@@ -83,9 +83,9 @@
                   </VBox>
                </children>
             </GridPane>
-            <ScrollPane prefHeight="572.0" prefWidth="764.0">
+            <ScrollPane minHeight="570.0" prefWidth="760.0">
                <content>
-                  <TableView fx:id="liste" minHeight="545.0" prefWidth="765.0" stylesheets="@../table.css" tableMenuButtonVisible="true">
+                  <TableView fx:id="liste" minHeight="560.0" prefWidth="760.0" stylesheets="@../table.css">
                      <columns>
                          <TableColumn fx:id="colNumSerie" editable="false" minWidth="100.0" prefWidth="168.0" text="Numero de serie" />
                          <TableColumn fx:id="colNom" editable="false" minWidth="100.0" prefWidth="189.0" text="Nom " />

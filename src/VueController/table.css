@@ -3,6 +3,7 @@ table-view, .tree-table-view {
     -fx-table-header-border-color: #3498db;
     -fx-table-cell-border-color: -fx-box-border; /* Horizontal Lines*/
     -fx-background-color: #3498db;
+    -fx-alignment: CENTER_LEFT;
 }
 .table-view .filler, .tree-table-view .filler, .table-view .column-header,
 .tree-table-view .column-header {
@@ -11,11 +12,12 @@ table-view, .tree-table-view {
     -fx-border-width: 0 0 2 0;
     -fx-text-fill: whitesmoke;
     -fx-background-color: #3498db;
-    -fx-alignment: CENTER;
+    -fx-alignment: CENTER_LEFT;
 }
 
 .table-view .show-hide-columns-button, .tree-table-view .show-hide-columns-button
 {
+    -fx-alignment: CENTER_LEFT;
     -fx-background-color: transparent;
 }
 
@@ -24,18 +26,29 @@ table-view, .tree-table-view {
 .tree-table-view .filler .label, .tree-table-view .column-drag-header .label
 {
     -fx-alignment: CENTER_LEFT;
+    -fx-text-fill: whitesmoke;
 }
 
 .table-view .column-header-background, .tree-table-view .column-header-background
 {
     -fx-background-color: transparent;
+    -fx-alignment: CENTER_LEFT;
 }
 
 .table-row-cell, .tree-table-row-cell {
     -fx-cell-size: 40px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-fill: white;
 }
 
 .table-cell {
     -fx-border-color: transparent; /* Vertical Lines*/
     -fx-border-width: 1;
+    -fx-alignment: CENTER_LEFT;
 }
+.table-row-cell:selected{
+    -fx-background-color: #3498db;
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-fill: whitesmoke;
+}
+

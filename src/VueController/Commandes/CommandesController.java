@@ -10,12 +10,14 @@ import Model.Repository.CommandeRepository;
 import VueController.ConfirmationController;
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -64,11 +66,10 @@ public class CommandesController implements Initializable {
         liste.setPlaceholder(new Label(""));
         commandes = FXCollections.observableArrayList();
         colId.setCellValueFactory(new PropertyValueFactory<>("numCommande"));
-        colNom.setCellValueFactory(new PropertyValueFactory<>("nomCommande"));
-        colPrenom.setCellValueFactory(new PropertyValueFactory<>("prenomCommande"));
-        colTel.setCellValueFactory(new PropertyValueFactory<>("telCommande"));
-        colAdresse.setCellValueFactory(new PropertyValueFactory<>("adresseCommande"));
-        colProvince.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getProvince().getProvince()));
+        colDate.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getDateCommande().toString()));
+        colNom.setCellValueFactory((p) -> {
+            return new SimpleStringProperty(p.getValue().getClient().getNomClient() + " " + p.getValue().getClient().getPrenomClient());
+        });
         this.loadCommandes();
     }
 
@@ -168,28 +169,17 @@ public class CommandesController implements Initializable {
         FilteredList<Commande> filteredData = new FilteredList<>(commandes, c -> true);
         txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(commande -> {
-                // If filter text is empty, display all persons.
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-
-                // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if (commande.getNumCommande().toString().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches first name.
-                } else if (commande.getNomCommande().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches last name.
-                } else if (commande.getPrenomCommande().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches last name.
-                } else if (commande.getAdresseCommande().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches last name.
-                } else if (commande.getTelCommande().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches last name.
-                } else if (commande.getProvince().getProvince().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches last name.
+                if (commande.getClient().getNomClient().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }else if (commande.getClient().getPrenomClient().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; 
                 }
-                return false; // Does not match.
+                return false;
             });
         });
         SortedList<Commande> sortedData = new SortedList<>(filteredData);
@@ -202,6 +192,9 @@ public class CommandesController implements Initializable {
     private void deleteCommande() {
         CommandeRepository.deleteCommande(liste.getSelectionModel().getSelectedItem());
     }
+    public void handlePanier(Event event) {
+        //
+    }
     @FXML
     AnchorPane root;
     @FXML
@@ -211,16 +204,12 @@ public class CommandesController implements Initializable {
     ImageView imgSearch;
     @FXML
     TableView<Commande> liste;
+    
     @FXML
     TableColumn<Commande, Integer> colId;
+    
     @FXML
     TableColumn<Commande, String> colNom;
     @FXML
-    TableColumn<Commande, String> colPrenom;
-    @FXML
-    TableColumn<Commande, String> colTel;
-    @FXML
-    TableColumn<Commande, String> colAdresse;
-    @FXML
-    TableColumn<Commande, String> colProvince;
+    TableColumn<Commande, String> colDate;
 }

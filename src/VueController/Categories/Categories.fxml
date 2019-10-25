@@ -83,11 +83,11 @@
                   </VBox>
                </children>
             </GridPane>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="708.0" prefWidth="824.0">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="568.0" prefWidth="764.0">
                <content>
-                  <TableView fx:id="liste" minHeight="625.0" prefWidth="761.0" stylesheets="@../table.css" tableMenuButtonVisible="true">
+                  <TableView fx:id="liste" minHeight="560.0" prefWidth="760.0" stylesheets="@../table.css">
                      <columns>
-                         <TableColumn fx:id="colCategorie" editable="false" minWidth="100.0" prefWidth="521.0" text="Categorie" />
+                         <TableColumn fx:id="colCategorie" editable="false" minWidth="100.0" prefWidth="741.0" text="Categorie" />
                      </columns>
                   </TableView>
                </content>

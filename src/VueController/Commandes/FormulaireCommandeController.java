@@ -7,10 +7,11 @@ package VueController.Commandes;
 
 import VueController.Commandes.CommandesController;
 import Model.Hibernate.Commande;
-import Model.Repository.ProvinceRepository;
+import Model.Repository.ClientRepository;
 import Model.Repository.CommandeRepository;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -20,7 +21,6 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -42,35 +42,26 @@ public class FormulaireCommandeController implements Initializable {
             modify = true;
             commandeModif = CommandesController.getCommandeModif();
         }
-        ObservableList<String> provinces = FXCollections.observableArrayList();
-        ProvinceRepository.getProvince().forEach((p) -> {
-            provinces.add(p.getProvince());
+        ObservableList<String> clients = FXCollections.observableArrayList();
+        ClientRepository.getClient().forEach((p) -> {
+            clients.add(p.getNomClient() + " " + p.getPrenomClient());
         });
-        cbProvince.setItems(provinces);
+        cbClient.setItems(clients);
         if (modify) {
             btnConfirmed.setText("Modifier");
-            cbProvince.getSelectionModel().select(commandeModif.getProvince().getProvince());
-            txtNom.setText(commandeModif.getNomCommande());
-            txtPrenom.setText(commandeModif.getPrenomCommande());
-            txtTel.setText(commandeModif.getTelCommande());
-            txtAdresse.setText(commandeModif.getAdresseCommande());
         } else {
-            cbProvince.getSelectionModel().select(0);
+            cbClient.getSelectionModel().select(0);
         }
 
     }
 
     public void handleConfirmed(ActionEvent event) {
         if (modify) {
-            commandeModif.setNomCommande(txtNom.getText());
-            commandeModif.setPrenomCommande(txtPrenom.getText());
-            commandeModif.setTelCommande(txtTel.getText());
-            commandeModif.setAdresseCommande(txtAdresse.getText());
-            commandeModif.setProvince(ProvinceRepository.getProvince(cbProvince.getSelectionModel().getSelectedItem()));
+            
             CommandeRepository.putCommande(commandeModif);
         } else {
-            Commande n = new Commande(ProvinceRepository.getProvince(cbProvince.getSelectionModel().getSelectedItem()), txtNom.getText(), txtPrenom.getText(), txtTel.getText(), txtAdresse.getText());
-            CommandeRepository.postCommande(n);
+            //Commande n = new Commande(ClientRepository.getClient(cbClient.getSelectionModel().getSelectedItem()), txtNom.getText(), txtPrenom.getText(), txtTel.getText(), txtAdresse.getText());
+           // CommandeRepository.postCommande(n);
         }
 
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
@@ -82,13 +73,7 @@ public class FormulaireCommandeController implements Initializable {
     @FXML
     JFXButton btnConfirmed;
     @FXML
-    JFXComboBox<String> cbProvince;
+    JFXComboBox<String> cbClient;
     @FXML
-    TextField txtNom;
-    @FXML
-    TextField txtPrenom;
-    @FXML
-    TextField txtAdresse;
-    @FXML
-    TextField txtTel;
+    JFXDatePicker ker;
 }
