@@ -9,7 +9,6 @@ import Model.Hibernate.Commande;
 import Model.Repository.ClientRepository;
 import Model.Repository.CommandeRepository;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Month;
@@ -24,6 +23,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
@@ -78,10 +78,10 @@ public class FormulaireCommandeController implements Initializable {
                         super.updateItem(item, empty);
                         if (item.isBefore(minDate)) {
                             setDisable(true);
-                            setStyle("-fx-background-color: #ffc0cb;");
+                            setStyle("-fx-background-color: #95a5a6;");
                         } else if (item.isAfter(maxDate)) {
                             setDisable(true);
-                            setStyle("-fx-background-color: #ffc0cb;");
+                            setStyle("-fx-background-color: #95a5a6;");
                         }
                     }
                 };
@@ -110,7 +110,7 @@ public class FormulaireCommandeController implements Initializable {
     @FXML
     JFXButton btnConfirmed;
     @FXML
-    JFXComboBox<String> cbClient;
+    ComboBox<String> cbClient;
     @FXML
     DatePicker datePicker;
 }

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="610.0" prefWidth="810.0" styleClass="shadowPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VueController.Commandes.FormulaireContientController">
+   <children>
+      <AnchorPane id="confirmDialog" layoutX="14.0" layoutY="14.0" prefHeight="600.0" prefWidth="800.0" styleClass="parentPane">
+         <children>
+            <Pane prefHeight="50.0" prefWidth="800.0" styleClass="top">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="754.0" layoutY="9.0" onMouseClicked="#handleCanceled" pickOnBounds="true" preserveRatio="true" styleClass="clickable">
+                     <image>
+                        <Image url="@../../Assets/icone/exit.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <ScrollPane layoutX="14.0" layoutY="145.0" prefHeight="340.0" prefWidth="779.0">
+               <content>
+                  <TableView fx:id="liste" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="777.0" stylesheets="@../table.css">
+                    <columns>
+                      <TableColumn fx:id="colNumSerie" prefWidth="140.0" text="Numero de serie" />
+                      <TableColumn fx:id="colNom" minWidth="0.0" prefWidth="225.0" text="Article" />
+                        <TableColumn fx:id="colQuantite" minWidth="0.0" text="Quantite" />
+                        <TableColumn fx:id="colPrixUnitaire" minWidth="0.0" prefWidth="150.0" text="Prix unitaire" />
+                        <TableColumn fx:id="colPrixTotal" minWidth="0.0" prefWidth="150.0" text="Prix Total" />
+                    </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+            <VBox alignment="CENTER" layoutX="672.0" layoutY="491.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="106.0" text="Total" textAlignment="RIGHT">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="lbTotal" text="20000">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Ariary">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <JFXComboBox fx:id="cbMeuble" layoutX="34.0" layoutY="89.0" prefHeight="26.0" prefWidth="213.0" />
+            <HBox alignment="CENTER" layoutX="466.0" layoutY="78.0" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="37.0" fitWidth="37.0" onMouseClicked="#handlePost" pickOnBounds="true" preserveRatio="true" styleClass="clickable">
+                     <image>
+                        <Image url="@../../Assets/icone/addContient.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#handleDelete" pickOnBounds="true" preserveRatio="true" styleClass="clickable">
+                     <image>
+                        <Image url="@../../Assets/icone/deleteContient.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#handlePrint" pickOnBounds="true" preserveRatio="true" styleClass="clickable">
+                     <image>
+                        <Image url="@../../Assets/icone/print.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="195.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <Spinner fx:id="spQuantite" editable="true" layoutX="258.0" layoutY="89.0" />
+         </children>
+      </AnchorPane>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@../global.css" />
+      <URL value="@formulairecontient.css" />
+   </stylesheets>
+</AnchorPane>

@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Oct 24, 2019, 11:20:10 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Oct 26, 2019, 5:40:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="Model.Hibernate.Contient" table="contient" catalog="Materiels" optimistic-lock="version">
         <id name="numContient" type="java.lang.Integer">
             <column name="num_contient" />
             <generator class="identity" />
         </id>
-        <many-to-one name="commande" class="Model.Hibernate.Commande" fetch="select">
+        <many-to-one lazy="false" name="commande" class="Model.Hibernate.Commande" fetch="select">
             <column name="commande_num_commande" not-null="true" />
         </many-to-one>
-        <many-to-one name="materiels" class="Model.Hibernate.Materiels" fetch="select">
+        <many-to-one lazy="false" name="materiels" class="Model.Hibernate.Materiels" fetch="select">
             <column name="materiels_num_serie" not-null="true" />
         </many-to-one>
         <property name="quantiteCommande" type="int">

@@ -46,11 +46,11 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Materiels?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">toor11</property>
-    <mapping resource="Model/Hibernate/Materiels.hbm.xml"/>
-    <mapping resource="Model/Hibernate/Commande.hbm.xml"/>
-    <mapping resource="Model/Hibernate/Province.hbm.xml"/>
-    <mapping resource="Model/Hibernate/Client.hbm.xml"/>
-    <mapping resource="Model/Hibernate/Categorie.hbm.xml"/>
     <mapping resource="Model/Hibernate/Contient.hbm.xml"/>
+    <mapping resource="Model/Hibernate/Categorie.hbm.xml"/>
+    <mapping resource="Model/Hibernate/Materiels.hbm.xml"/>
+    <mapping resource="Model/Hibernate/Province.hbm.xml"/>
+    <mapping resource="Model/Hibernate/Commande.hbm.xml"/>
+    <mapping resource="Model/Hibernate/Client.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

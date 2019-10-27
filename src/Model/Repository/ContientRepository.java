@@ -15,7 +15,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import Model.Hibernate.Contient;
+import Model.Hibernate.Commande;
 import Model.Hibernate.HibernateUtil;
+import org.hibernate.Query;
 
 public class ContientRepository {
     public static void postContient(Contient c) {
@@ -67,6 +69,31 @@ public class ContientRepository {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             res = session.createQuery("from Contient").list();
+            transaction.commit();
+            
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally{
+            if(session.isOpen()){
+                session.close();
+            }
+            return res;
+        }
+    }
+    
+    public static List<Contient> getContient(Commande cmd) {
+        Transaction transaction = null;
+        List<Contient> res = null;
+        Session session = null;
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Query q = session.createQuery("from Contient where commande.numCommande = ?");
+            q.setInteger(0, cmd.getNumCommande());
+            res = q.list();
             transaction.commit();
             
         } catch (Exception e) {

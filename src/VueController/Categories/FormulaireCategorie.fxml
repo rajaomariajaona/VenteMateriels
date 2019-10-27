@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="236.0" prefWidth="424.0" styleClass="shadowPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VueController.Categories.FormulaireCategorieController">
+<AnchorPane prefHeight="236.0" prefWidth="424.0" styleClass="shadowPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VueController.Categories.FormulaireCategorieController">
    <children>
       <AnchorPane id="confirmDialog" layoutX="14.0" layoutY="14.0" prefHeight="206.0" prefWidth="400.0" styleClass="parentPane">
          <children>
@@ -25,16 +25,16 @@
                </children>
             </Pane>
             <VBox layoutX="-1.0" layoutY="50.0" prefHeight="100.0" prefWidth="400.0">
-               <children>
-                  <TextField fx:id="txtCategorie" prefWidth="249.0" promptText="Categorie" styleClass="textField">
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </TextField>
-               </children>
                <padding>
                   <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
                </padding>
+               <children>
+                  <JFXTextField fx:id="txtCategorie" promptText="Categorie">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+               </children>
             </VBox>
             <HBox alignment="CENTER" layoutX="-1.0" layoutY="150.0" prefHeight="30.0" prefWidth="400.0">
                <children>

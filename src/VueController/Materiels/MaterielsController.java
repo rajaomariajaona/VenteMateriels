@@ -56,10 +56,10 @@ public class MaterielsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        root.visibleProperty().addListener((o,oldValue, newValue) -> {
-           if(newValue){
-           this.loadMateriels();
-           }
+        root.visibleProperty().addListener((o, oldValue, newValue) -> {
+            if (newValue) {
+                this.loadMateriels();
+            }
         });
         liste.setPlaceholder(new Label(""));
         materiels = FXCollections.observableArrayList();
@@ -79,9 +79,16 @@ public class MaterielsController implements Initializable {
             dialog.initOwner(Main.Main.getPrimaryStage());
             dialog.initModality(Modality.WINDOW_MODAL);
 
+            double centerXPosition = Main.Main.getPrimaryStage().getX() + Main.Main.getPrimaryStage().getWidth() / 2d;
+            double centerYPosition = Main.Main.getPrimaryStage().getY() + Main.Main.getPrimaryStage().getHeight() / 2d;
+            dialog.setOnShowing(ev -> dialog.hide());
+
             Node n = ((Node) event.getSource());
             dialog.setOnShown((t) -> {
                 n.getScene().getRoot().setEffect(blur);
+                dialog.setX(centerXPosition - dialog.getWidth() / 2d);
+                dialog.setY(centerYPosition - dialog.getHeight() / 2d);
+                dialog.show();
             });
             dialog.setOnHidden((t) -> {
                 n.getScene().getRoot().setEffect(null);
@@ -107,9 +114,16 @@ public class MaterielsController implements Initializable {
                 dialog.initOwner(Main.Main.getPrimaryStage());
                 dialog.initModality(Modality.WINDOW_MODAL);
 
+                double centerXPosition = Main.Main.getPrimaryStage().getX() + Main.Main.getPrimaryStage().getWidth() / 2d;
+                double centerYPosition = Main.Main.getPrimaryStage().getY() + Main.Main.getPrimaryStage().getHeight() / 2d;
+                dialog.setOnShowing(ev -> dialog.hide());
+
                 Node n = ((Node) event.getSource());
                 dialog.setOnShown((t) -> {
                     n.getScene().getRoot().setEffect(blur);
+                    dialog.setX(centerXPosition - dialog.getWidth() / 2d);
+                    dialog.setY(centerYPosition - dialog.getHeight() / 2d);
+                    dialog.show();
                 });
                 dialog.setOnHidden((t) -> {
                     n.getScene().getRoot().setEffect(null);
@@ -139,9 +153,16 @@ public class MaterielsController implements Initializable {
                 dialog.initOwner(Main.Main.getPrimaryStage());
                 dialog.initModality(Modality.WINDOW_MODAL);
 
+                double centerXPosition = Main.Main.getPrimaryStage().getX() + Main.Main.getPrimaryStage().getWidth() / 2d;
+                double centerYPosition = Main.Main.getPrimaryStage().getY() + Main.Main.getPrimaryStage().getHeight() / 2d;
+                dialog.setOnShowing(ev -> dialog.hide());
+
                 Node n = ((Node) event.getSource());
                 dialog.setOnShown((t) -> {
                     n.getScene().getRoot().setEffect(blur);
+                    dialog.setX(centerXPosition - dialog.getWidth() / 2d);
+                    dialog.setY(centerYPosition - dialog.getHeight() / 2d);
+                    dialog.show();
                 });
                 dialog.setOnHidden((t) -> {
                     n.getScene().getRoot().setEffect(null);
@@ -173,12 +194,12 @@ public class MaterielsController implements Initializable {
                 String lowerCaseFilter = newValue.toLowerCase();
 
                 if ((materiel.getNumSerie() + "").toLowerCase().contains(lowerCaseFilter)) {
-                    return true; 
+                    return true;
                 } else if (materiel.getNomMateriels().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 } else if ((materiel.getPrixMateriels() + "").toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if ((materiel.getQuantiteStock()+ "").toLowerCase().contains(lowerCaseFilter)) {
+                } else if ((materiel.getQuantiteStock() + "").toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 } else if (materiel.getCategorie().getCategorie().toLowerCase().contains(lowerCaseFilter)) {
                     return true;

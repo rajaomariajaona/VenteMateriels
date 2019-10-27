@@ -41,10 +41,10 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="Materiels"/>
-  <table-filter match-name="contient"/>
-  <table-filter match-name="client"/>
-  <table-filter match-name="province"/>
   <table-filter match-name="categorie"/>
-  <table-filter match-name="materiels"/>
   <table-filter match-name="commande"/>
+  <table-filter match-name="contient"/>
+  <table-filter match-name="province"/>
+  <table-filter match-name="materiels"/>
+  <table-filter match-name="client"/>
 </hibernate-reverse-engineering>

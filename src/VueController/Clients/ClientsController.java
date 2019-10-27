@@ -80,9 +80,16 @@ public class ClientsController implements Initializable {
             dialog.initOwner(Main.Main.getPrimaryStage());
             dialog.initModality(Modality.WINDOW_MODAL);
 
+            double centerXPosition = Main.Main.getPrimaryStage().getX() + Main.Main.getPrimaryStage().getWidth() / 2d;
+            double centerYPosition = Main.Main.getPrimaryStage().getY() + Main.Main.getPrimaryStage().getHeight() / 2d;
+            dialog.setOnShowing(ev -> dialog.hide());
+
             Node n = ((Node) event.getSource());
             dialog.setOnShown((t) -> {
                 n.getScene().getRoot().setEffect(blur);
+                dialog.setX(centerXPosition - dialog.getWidth() / 2d);
+                dialog.setY(centerYPosition - dialog.getHeight() / 2d);
+                dialog.show();
             });
             dialog.setOnHidden((t) -> {
                 n.getScene().getRoot().setEffect(null);
@@ -108,9 +115,16 @@ public class ClientsController implements Initializable {
                 dialog.initOwner(Main.Main.getPrimaryStage());
                 dialog.initModality(Modality.WINDOW_MODAL);
 
+                double centerXPosition = Main.Main.getPrimaryStage().getX() + Main.Main.getPrimaryStage().getWidth() / 2d;
+                double centerYPosition = Main.Main.getPrimaryStage().getY() + Main.Main.getPrimaryStage().getHeight() / 2d;
+                dialog.setOnShowing(ev -> dialog.hide());
+
                 Node n = ((Node) event.getSource());
                 dialog.setOnShown((t) -> {
                     n.getScene().getRoot().setEffect(blur);
+                    dialog.setX(centerXPosition - dialog.getWidth() / 2d);
+                    dialog.setY(centerYPosition - dialog.getHeight() / 2d);
+                    dialog.show();
                 });
                 dialog.setOnHidden((t) -> {
                     n.getScene().getRoot().setEffect(null);
@@ -140,9 +154,16 @@ public class ClientsController implements Initializable {
                 dialog.initOwner(Main.Main.getPrimaryStage());
                 dialog.initModality(Modality.WINDOW_MODAL);
 
+                double centerXPosition = Main.Main.getPrimaryStage().getX() + Main.Main.getPrimaryStage().getWidth() / 2d;
+                double centerYPosition = Main.Main.getPrimaryStage().getY() + Main.Main.getPrimaryStage().getHeight() / 2d;
+                dialog.setOnShowing(ev -> dialog.hide());
+
                 Node n = ((Node) event.getSource());
                 dialog.setOnShown((t) -> {
                     n.getScene().getRoot().setEffect(blur);
+                    dialog.setX(centerXPosition - dialog.getWidth() / 2d);
+                    dialog.setY(centerYPosition - dialog.getHeight() / 2d);
+                    dialog.show();
                 });
                 dialog.setOnHidden((t) -> {
                     n.getScene().getRoot().setEffect(null);

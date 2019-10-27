@@ -85,6 +85,27 @@ public class MaterielsRepository {
             return res;
         }
     }
+    public static List<Materiels> getMaterielsDispo() {
+        Transaction transaction = null;
+        List<Materiels> res = null;
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            res = session.createQuery("from Materiels where quantiteStock > 0").list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            if (session.isOpen()) {
+                session.close();
+            }
+            return res;
+        }
+    }
 
     public static Materiels putMateriels(Materiels oldValue, Materiels newValue) {
 

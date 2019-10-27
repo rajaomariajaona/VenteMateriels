@@ -1,14 +1,12 @@
 table-view, .tree-table-view {
     /* Constants used throughout the tableview. */
     -fx-table-header-border-color: #3498db;
-    -fx-table-cell-border-color: -fx-box-border; /* Horizontal Lines*/
     -fx-background-color: #3498db;
     -fx-alignment: CENTER_LEFT;
 }
 .table-view .filler, .tree-table-view .filler, .table-view .column-header,
 .tree-table-view .column-header {
     -fx-size: 65;
-    -fx-border-color: -swatch-grey;
     -fx-border-width: 0 0 2 0;
     -fx-text-fill: whitesmoke;
     -fx-background-color: #3498db;

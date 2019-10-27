@@ -32,18 +32,13 @@
     -fx-border-radius: 2px;
     -fx-border-width: 1.5px;
 }
-.textField{
-    -fx-background-color: transparent;
-    -fx-text-fill: #2c3e50;
-    -fx-prompt-text-fill: #2c3e50;
-    -fx-border-color: #2c3e50;
-    -fx-border-width:  0px 0px 1.5px 0px;
+.jfx-text-field, .jfx-combo-box{
+   -jfx-unfocus-color: #3498db;
+   -jfx-focus-color: #3498db;
+   -fx-prompt-text-fill: #2c3e50;
 }
-.textField:focused{
-    -fx-text-fill: #3498db;
-    -fx-prompt-text-fill: #3498db;
-    -fx-border-color: #3498db;
-    -fx-border-width:  0px 0px 3px 0px;
+.jfx-date-picker{
+    -jfx-default-color: #3498db;
 }
 .shadowPane{
     -fx-background-color: transparent;

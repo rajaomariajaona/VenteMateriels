@@ -10,7 +10,6 @@ import Model.Repository.CommandeRepository;
 import VueController.ConfirmationController;
 import java.io.IOException;
 import java.net.URL;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -47,6 +46,15 @@ public class CommandesController implements Initializable {
 
     private ObservableList<Commande> commandes;
     private static Commande commandeModif = null;
+    private static Commande commandeCourrant = null;
+
+    public static Commande getCommandeCourrant() {
+        return commandeCourrant;
+    }
+
+    public static void setCommandeCourrant(Commande commandeCourrant) {
+        CommandesController.commandeCourrant = commandeCourrant;
+    }
 
     public static Commande getCommandeModif() {
         return commandeModif;
@@ -81,9 +89,16 @@ public class CommandesController implements Initializable {
             dialog.initOwner(Main.Main.getPrimaryStage());
             dialog.initModality(Modality.WINDOW_MODAL);
 
+            double centerXPosition = Main.Main.getPrimaryStage().getX() + Main.Main.getPrimaryStage().getWidth() / 2d;
+            double centerYPosition = Main.Main.getPrimaryStage().getY() + Main.Main.getPrimaryStage().getHeight() / 2d;
+            dialog.setOnShowing(ev -> dialog.hide());
+
             Node n = ((Node) event.getSource());
             dialog.setOnShown((t) -> {
                 n.getScene().getRoot().setEffect(blur);
+                dialog.setX(centerXPosition - dialog.getWidth() / 2d);
+                dialog.setY(centerYPosition - dialog.getHeight() / 2d);
+                dialog.show();
             });
             dialog.setOnHidden((t) -> {
                 n.getScene().getRoot().setEffect(null);
@@ -109,9 +124,16 @@ public class CommandesController implements Initializable {
                 dialog.initOwner(Main.Main.getPrimaryStage());
                 dialog.initModality(Modality.WINDOW_MODAL);
 
+                double centerXPosition = Main.Main.getPrimaryStage().getX() + Main.Main.getPrimaryStage().getWidth() / 2d;
+                double centerYPosition = Main.Main.getPrimaryStage().getY() + Main.Main.getPrimaryStage().getHeight() / 2d;
+                dialog.setOnShowing(ev -> dialog.hide());
+
                 Node n = ((Node) event.getSource());
                 dialog.setOnShown((t) -> {
                     n.getScene().getRoot().setEffect(blur);
+                    dialog.setX(centerXPosition - dialog.getWidth() / 2d);
+                    dialog.setY(centerYPosition - dialog.getHeight() / 2d);
+                    dialog.show();
                 });
                 dialog.setOnHidden((t) -> {
                     n.getScene().getRoot().setEffect(null);
@@ -141,9 +163,16 @@ public class CommandesController implements Initializable {
                 dialog.initOwner(Main.Main.getPrimaryStage());
                 dialog.initModality(Modality.WINDOW_MODAL);
 
+                double centerXPosition = Main.Main.getPrimaryStage().getX() + Main.Main.getPrimaryStage().getWidth() / 2d;
+                double centerYPosition = Main.Main.getPrimaryStage().getY() + Main.Main.getPrimaryStage().getHeight() / 2d;
+                dialog.setOnShowing(ev -> dialog.hide());
+
                 Node n = ((Node) event.getSource());
                 dialog.setOnShown((t) -> {
                     n.getScene().getRoot().setEffect(blur);
+                    dialog.setX(centerXPosition - dialog.getWidth() / 2d);
+                    dialog.setY(centerYPosition - dialog.getHeight() / 2d);
+                    dialog.show();
                 });
                 dialog.setOnHidden((t) -> {
                     n.getScene().getRoot().setEffect(null);
@@ -176,8 +205,8 @@ public class CommandesController implements Initializable {
 
                 if (commande.getClient().getNomClient().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                }else if (commande.getClient().getPrenomClient().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; 
+                } else if (commande.getClient().getPrenomClient().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
                 }
                 return false;
             });
@@ -192,8 +221,40 @@ public class CommandesController implements Initializable {
     private void deleteCommande() {
         CommandeRepository.deleteCommande(liste.getSelectionModel().getSelectedItem());
     }
+
     public void handlePanier(Event event) {
-        //
+        if (!liste.getSelectionModel().isEmpty()) {
+            CommandesController.setCommandeCourrant(liste.getSelectionModel().getSelectedItem());
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("FormulaireContient.fxml"));
+                BoxBlur blur = new BoxBlur(3, 3, 3);
+                Stage dialog = new Stage(StageStyle.TRANSPARENT);
+                dialog.initOwner(Main.Main.getPrimaryStage());
+                dialog.initModality(Modality.WINDOW_MODAL);
+
+                double centerXPosition = Main.Main.getPrimaryStage().getX() + Main.Main.getPrimaryStage().getWidth() / 2d;
+                double centerYPosition = Main.Main.getPrimaryStage().getY() + Main.Main.getPrimaryStage().getHeight() / 2d;
+                dialog.setOnShowing(ev -> dialog.hide());
+
+                Node n = ((Node) event.getSource());
+                dialog.setOnShown((t) -> {
+                    n.getScene().getRoot().setEffect(blur);
+                    dialog.setX(centerXPosition - dialog.getWidth() / 2d);
+                    dialog.setY(centerYPosition - dialog.getHeight() / 2d);
+                    dialog.show();
+                });
+                dialog.setOnHidden((t) -> {
+                    n.getScene().getRoot().setEffect(null);
+                });
+
+                Scene sc = new Scene(root);
+                sc.setFill(Color.TRANSPARENT);
+                dialog.setScene(sc);
+                dialog.show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
     @FXML
     AnchorPane root;
@@ -204,10 +265,10 @@ public class CommandesController implements Initializable {
     ImageView imgSearch;
     @FXML
     TableView<Commande> liste;
-    
+
     @FXML
     TableColumn<Commande, Integer> colId;
-    
+
     @FXML
     TableColumn<Commande, String> colNom;
     @FXML
