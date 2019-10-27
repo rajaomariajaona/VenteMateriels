@@ -11,7 +11,6 @@ import VueController.ConfirmationController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;

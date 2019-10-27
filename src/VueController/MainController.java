@@ -1,9 +1,5 @@
 package VueController;
 
-import Model.Hibernate.Contient;
-import Model.Repository.CommandeRepository;
-import Model.Repository.ContientRepository;
-import Model.Repository.MaterielsRepository;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -5,7 +5,6 @@
  */
 package Main;
 
-import Model.Repository.ClientRepository;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
