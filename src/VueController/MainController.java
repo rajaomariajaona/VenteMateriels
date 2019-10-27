@@ -46,15 +46,15 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             parents = new Parent[5];
-            parents[0] = FXMLLoader.load(getClass().getResource("/VueController/Clients/Clients.fxml"));
+            parents[0] = FXMLLoader.load(getClass().getResource("/VueController/Acceuil/Acceuil.fxml"));
             parents[1] = FXMLLoader.load(getClass().getResource("/VueController/Clients/Clients.fxml"));
             parents[2] = FXMLLoader.load(getClass().getResource("/VueController/Commandes/Commandes.fxml"));
             parents[3] = FXMLLoader.load(getClass().getResource("/VueController/Materiels/Materiels.fxml"));
             parents[4] = FXMLLoader.load(getClass().getResource("/VueController/Categories/Categories.fxml"));
             for (Parent parent : parents) {
                 mainPane.getChildren().add(parent);
-                parent.setVisible(false);
             }
+            parents[0].toFront();
             btnTab = new HBox[5];
             btnTab[0] = btnAcceuil;
             btnTab[1] = btnClients;
@@ -86,21 +86,23 @@ public class MainController implements Initializable {
         HBox n = ((HBox) event.getSource());
         for (int i = 0; i < btnTab.length; i++) {
             btnTab[i].getStyleClass().removeIf(classe -> classe.equals("tab-selected"));
-            parents[i].setVisible(false);
         }
         n.getStyleClass().add("tab-selected");
         switch (n.getId().replace("btn", "")) {
+            case "Acceuil":
+                parents[0].toFront();
+                break;
             case "Clients":
-                parents[1].setVisible(true);
+                parents[1].toFront();
                 break;
             case "Commandes":
-                parents[2].setVisible(true);
+                parents[2].toFront();
                 break;
             case "Articles":
-                parents[3].setVisible(true);
+                parents[3].toFront();
                 break;
             case "Categories":
-                parents[4].setVisible(true);
+                parents[4].toFront();
                 break;
         }
     }
